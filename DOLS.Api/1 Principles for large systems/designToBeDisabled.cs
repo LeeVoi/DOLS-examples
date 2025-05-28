@@ -6,20 +6,20 @@ namespace DOLS.Api._1_Principles_for_large_systems;
 // This class demonstrates a simple API controller that checks if a feature flag is enabled.
 
 
-[ApiController] // Marks this class as an API controller (automatic 400 on model errors, etc.)
-[Route("api/[controller]")] // Routes to "api/feature" (controller name minus "Controller")
+[ApiController] 
+[Route("api/[controller]")] 
 public class FeatureController : ControllerBase
 {
     private readonly IFeatureService _featureService; // Abstraction for checking feature‐flag status
 
     public FeatureController(IFeatureService featureService)
     {
-        _featureService = featureService; // Inject the feature‐flag service via DI
+        _featureService = featureService; 
     }
 
-    [HttpGet] // Responds to GET requests at /api/feature
+    [HttpGet]
     public async Task<IActionResult> GetFeatureFlagAsync(
-        [FromQuery] string featureName // Binds the "featureName" query parameter (?featureName=Foo)
+        [FromQuery] string featureName 
     )
     {
         // Ask the service if the named feature is enabled
